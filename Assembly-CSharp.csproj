@@ -71,8 +71,11 @@
     <Compile Include="Assets\KinectView\Scripts\InfraredSourceManager.cs" />
     <Compile Include="Assets\KinectView\Scripts\InfraredSourceView.cs" />
     <Compile Include="Assets\KinectView\Scripts\MultiSourceManager.cs" />
+    <Compile Include="Assets\MTM-Team\Camera\CombinedMouseLookAndCameraMove.cs" />
+    <Compile Include="Assets\MTM-Team\Camera\FlyCamera.cs" />
     <Compile Include="Assets\MTM-Team\HitBox\HitBox.cs" />
-    <Compile Include="Assets\MTM-Team\PointCloudView.cs" />
+    <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
+    <None Include="Assets\MTM-Team\PointCloud\VertexColor.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/hidde/Documents/MTM-Study/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
