@@ -8,6 +8,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     bool active;
     Vector3 initialPosition;
     public GameObject hitBoxPreFab;
+    public GameObject planeObject;
     public float scrollSpeed = 10.0f;
 
     enum Mode
@@ -17,7 +18,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     }
     Mode mode;
     Plane plane;
-    GameObject planeObject;
+
     // Use list of hitboxes later
     GameObject hitBox; // box to be place
 
@@ -72,6 +73,18 @@ public class HitBoxPlacementControls : MonoBehaviour
             mode = (mode == Mode.PLANE) ? Mode.VERTICAL : Mode.PLANE;
         }
         */
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(hitBox);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            active = false;
+        }
+
+
         
     }
 
@@ -79,10 +92,9 @@ public class HitBoxPlacementControls : MonoBehaviour
     void initialize()
     {
         active = true;
-        plane = new Plane(Vector3.up, initialPosition);
-        planeObject = GameObject.CreatePrimitive(PrimitiveType.Plane);
         planeObject.transform.position = initialPosition;
         planeObject.transform.localScale += new Vector3(10, 10, 10);
+        plane = new Plane(planeObject.transform.up, planeObject.transform.position);
         hitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
     }
 }
