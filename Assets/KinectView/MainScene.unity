@@ -1433,6 +1433,7 @@ GameObject:
   - component: {fileID: 1864229723}
   - component: {fileID: 1864229722}
   - component: {fileID: 1864229721}
+  - component: {fileID: 1864229725}
   m_Layer: 0
   m_Name: HitBoxPlacementPlane
   m_TagString: Untagged
@@ -1471,7 +1472,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 058589d4755bb0e44a14b0785d8b5667, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1513,6 +1514,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1864229725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864229720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 012448fa59f5cf04aa5c518048f11936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitBoxPreFab: {fileID: 0}
+  planeObject: {fileID: 0}
+  scrollSpeed: 10
 --- !u!1 &1988608400
 GameObject:
   m_ObjectHideFlags: 0
