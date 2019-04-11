@@ -75,6 +75,7 @@
     <Compile Include="Assets\MTM-Team\Camera\CombinedMouseLookAndCameraMove.cs" />
     <Compile Include="Assets\MTM-Team\Camera\FlyCamera.cs" />
     <Compile Include="Assets\MTM-Team\HitBox\HitBox.cs" />
+    <Compile Include="Assets\MTM-Team\HitBoxPlacementControls\HitBoxPlacementControls.cs" />
     <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
     <None Include="Assets\MTM-Team\PointCloud\VertexColor.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

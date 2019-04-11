@@ -33,15 +33,15 @@ public class CameraOrbit : MonoBehaviour
     void Update()
     {
         // move camera
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D)) // right
         {
             transform.RotateAround(center.transform.position, Vector3.up, - angVel * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A)) // left
         {
             transform.RotateAround(center.transform.position, Vector3.up, angVel * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S)) // down
         {
             Vector3 relPos = gameObject.transform.position - center.transform.position;
             if (Vector3.Angle(relPos, Vector3.up) < 160)
@@ -50,7 +50,7 @@ public class CameraOrbit : MonoBehaviour
                 transform.RotateAround(center.transform.position, rotAxis, - angVel * Time.deltaTime);
             }
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W)) // up
         {
             Vector3 relPos = gameObject.transform.position - center.transform.position;
             if (Vector3.Angle(relPos, Vector3.up) > 20)
@@ -59,10 +59,13 @@ public class CameraOrbit : MonoBehaviour
                 transform.RotateAround(center.transform.position, rotAxis, angVel * Time.deltaTime);
             }
         }
+
+        /*
         if (Input.GetKey(KeyCode.Space))
         {
             setInitialPosition();
         }
+        */
 
 
         // look at center object
