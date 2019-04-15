@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 1281
+    x: 1
     y: 51
     width: 1278
     height: 988
@@ -45,7 +45,7 @@ MonoBehaviour:
     y: 0
     width: 1278
     height: 988
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 123
+  controlID: 59
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -293,10 +293,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1572
+    x: 1565
     y: 81
     width: 706
-    height: 503
+    height: 499
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -353
     m_HBaseRangeMax: 353
-    m_VBaseRangeMin: -243
-    m_VBaseRangeMax: 243
+    m_VBaseRangeMin: -241
+    m_VBaseRangeMax: 241
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -330,9 +330,9 @@ MonoBehaviour:
       x: 0
       y: 17
       width: 706
-      height: 486
+      height: 482
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 353, y: 243}
+    m_Translation: {x: 353, y: 241}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -340,14 +340,14 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -353
-      y: -243
+      y: -241
       width: 706
-      height: 486
+      height: 482
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 706, y: 503}
+  m_LastWindowPixelSize: {x: 706, y: 499}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -373,7 +373,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1281
+    x: 1
     y: 81
     width: 289
     height: 503
@@ -427,7 +427,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1572
+    x: 292
     y: 81
     width: 706
     height: 503
@@ -533,7 +533,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1281
+    x: 1
     y: 604
     width: 999
     height: 395
@@ -550,20 +550,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MTM-Team/HitBoxPlacementControls/Materials
+    - Assets/MTM-Team/HitBoxPlacementControls
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/MTM-Team/HitBoxPlacementControls/Materials
+  - Assets/MTM-Team/HitBoxPlacementControls
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\hidde\Documents\MTM-Study
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 5c2a0000
-    m_LastClickedID: 10844
-    m_ExpandedIDs: 00000000340a00004a0a0000800a0000bc0a0000220b00003c0b0000620b00005c2a000000ca9a3b
+    m_SelectedIDs: 4a0a0000
+    m_LastClickedID: 2634
+    m_ExpandedIDs: 00000000340a00004a0a0000800a0000bc0a0000240b00003e0b0000660b0000800b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -591,7 +591,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000340a0000800a0000bc0a0000220b00003c0b0000620b0000
+    m_ExpandedIDs: 00000000340a00004a0a0000800a0000bc0a0000240b00003e0b0000660b0000800b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -693,7 +693,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2282
+    x: 1002
     y: 81
     width: 275
     height: 918

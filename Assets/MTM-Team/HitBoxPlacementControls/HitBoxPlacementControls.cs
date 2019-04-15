@@ -37,6 +37,12 @@ public class HitBoxPlacementControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            initialize();
+        }
+
         if (!active) {
             return;
         }
@@ -82,6 +88,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             active = false;
+            planeObject.SetActive(false);
         }
 
 
@@ -93,7 +100,8 @@ public class HitBoxPlacementControls : MonoBehaviour
     {
         active = true;
         planeObject.transform.position = initialPosition;
-        planeObject.transform.localScale += new Vector3(10, 10, 10);
+        planeObject.transform.localScale = new Vector3(10, 10, 10);
+        planeObject.SetActive(true);
         plane = new Plane(planeObject.transform.up, planeObject.transform.position);
         hitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
     }
