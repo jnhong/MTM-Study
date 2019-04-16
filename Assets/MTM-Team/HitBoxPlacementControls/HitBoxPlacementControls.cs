@@ -9,6 +9,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     public GameObject planeObject;
     public float scrollSpeed = 10.0f;
     public GestureManager gestureManager;
+    public GestureScreen gestureScreen;
 
     Plane plane;
     GameObject hitBox; // box to be place
@@ -77,7 +78,7 @@ public class HitBoxPlacementControls : MonoBehaviour
 
     private void onEscape()
     {
-        uninitialize();
+        gestureScreen.onMenuScreenButton();
     }
 
     // call to begin gesture creation

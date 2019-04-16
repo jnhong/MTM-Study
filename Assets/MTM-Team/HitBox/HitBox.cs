@@ -27,7 +27,10 @@ public class HitBox : MonoBehaviour
         if (other.gameObject.name == "HandLeft")
         {
             rend.material.color = new Color(1, 0, 0, 0.25f);
-            gesture.hit(gameObject);
+            if (gesture != null)
+            {
+                gesture.hit(gameObject);
+            }
         }
 
     }

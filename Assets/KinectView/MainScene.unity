@@ -1064,6 +1064,7 @@ MonoBehaviour:
   planeObject: {fileID: 1864229720}
   scrollSpeed: 1
   gestureManager: {fileID: 630884341}
+  gestureScreen: {fileID: 1550696152}
 --- !u!4 &809719634
 Transform:
   m_ObjectHideFlags: 0

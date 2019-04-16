@@ -84,7 +84,6 @@
     <Compile Include="Assets\MTM-Team\Screens\RecordScreen.cs" />
     <Compile Include="Assets\MTM-Team\Screens\StateManager.cs" />
     <Compile Include="Assets\MTM-Team\Utility\FileWriter.cs" />
-    <Compile Include="Assets\NewBehaviourScript.cs" />
     <None Include="Assets\MTM-Team\PointCloud\VertexColor.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/hidde/Documents/MTM-Study/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

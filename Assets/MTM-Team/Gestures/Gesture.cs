@@ -6,11 +6,18 @@ public class Gesture
 {
     LinkedList<GameObject> hitBoxes; // the actual hitboxes are game objects
     LinkedListNode<GameObject> currentNode; // hitbox to be hit in sequence
+    string label;
 
     public Gesture()
     {
         hitBoxes = new LinkedList<GameObject>();
         currentNode = null;
+        label = "unlabeled";
+    }
+
+    public void setLabel(string label)
+    {
+        this.label = label;
     }
 
     public void resetSequence()
