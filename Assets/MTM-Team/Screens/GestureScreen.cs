@@ -5,10 +5,24 @@ using UnityEngine;
 public class GestureScreen : MonoBehaviour
 {
     public StateManager stateManager;
+    public HitBoxPlacementControls controls;
+
+    public void initialize()
+    {
+        controls.gameObject.SetActive(true);
+        controls.initialize();
+    }
+
+    private void uninitialize()
+    {
+        controls.gameObject.SetActive(false);
+        controls.uninitialize();
+    }
 
     public void onMenuScreenButton()
     {
         gameObject.SetActive(false);
         stateManager.toMenuScreen();
+        uninitialize();
     }
 }

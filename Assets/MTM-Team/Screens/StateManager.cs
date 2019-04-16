@@ -44,6 +44,7 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Gesture;
         gestureScreen.gameObject.SetActive(true);
+        gestureScreen.initialize();
     }
 
     public void toRecordScreen()

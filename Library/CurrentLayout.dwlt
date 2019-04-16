@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 498}
   m_MaxSize: {x: 14004, y: 14048}
   vertical: 0
-  controlID: 121
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 498}
   m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 37
+  controlID: 28
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 224}
   m_MaxSize: {x: 8006, y: 4024}
   vertical: 0
-  controlID: 38
+  controlID: 29
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,23 +381,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0c0d0000
-      m_LastClickedID: 3340
-      m_ExpandedIDs: dae2ffff2ce5ffff38e6ffffd2f3ffffd4fbffff0c0d0000220d0000480d00005a0d0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: d4fbffff040d00003e0d0000880d00009a0d0000be0d0000000e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: PointCloudView
+        m_OriginalName: PointCloudView
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 3492
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 8}
       m_SearchString: 
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 362.1556, y: 144.067, z: -1.2394625}
+    m_Target: {x: -4.29, y: 2.25, z: 16.84}
     speed: 2
-    m_Value: {x: 362.1556, y: 144.067, z: -1.2394625}
+    m_Value: {x: -4.29, y: 2.25, z: 16.84}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -472,9 +472,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 392.74515
+    m_Target: 22
     speed: 2
-    m_Value: 392.74515
+    m_Value: 22
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -550,19 +550,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MTM-Team/Screens
+    - Assets/MTM-Team/HitBoxPlacementControls
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/MTM-Team/Screens
+  - Assets/MTM-Team/HitBoxPlacementControls
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\hidde\Documents\MTM-Study
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: dc0b0000
-    m_LastClickedID: 3036
+    m_SelectedIDs: 520a0000
+    m_LastClickedID: 2642
     m_ExpandedIDs: 000000003c0a0000520a0000880a0000c40a00002c0b0000460b00006e0b0000880b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0

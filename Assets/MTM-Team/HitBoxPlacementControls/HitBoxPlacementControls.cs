@@ -5,7 +5,6 @@ using UnityEngine;
 public class HitBoxPlacementControls : MonoBehaviour
 {
 
-    bool active;
     Vector3 initialPosition;
     public GameObject hitBoxPreFab;
     public GameObject planeObject;
@@ -27,7 +26,6 @@ public class HitBoxPlacementControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        active = false;
         mode = Mode.PLANE;
         initialPosition = gameObject.transform.position;
         // remove later
@@ -41,10 +39,6 @@ public class HitBoxPlacementControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             initialize();
-        }
-
-        if (!active) {
-            return;
         }
 
         // get ray from camera
@@ -87,7 +81,6 @@ public class HitBoxPlacementControls : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            active = false;
             planeObject.SetActive(false);
         }
 
@@ -96,13 +89,17 @@ public class HitBoxPlacementControls : MonoBehaviour
     }
 
     // call back externally to begin box placement
-    void initialize()
+    public void initialize()
     {
-        active = true;
         planeObject.transform.position = initialPosition;
         planeObject.transform.localScale = new Vector3(10, 10, 10);
         planeObject.SetActive(true);
         plane = new Plane(planeObject.transform.up, planeObject.transform.position);
         hitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
+    }
+
+    public void uninitialize()
+    {
+        planeObject.SetActive(false);
     }
 }
