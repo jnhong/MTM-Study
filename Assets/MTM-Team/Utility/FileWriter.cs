@@ -14,8 +14,6 @@ public class FileWriter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!path.EndsWith("\\"))           
-            path = path + "\\";
         File.WriteAllText(Path.Combine(path, filename), log);
     }
 
