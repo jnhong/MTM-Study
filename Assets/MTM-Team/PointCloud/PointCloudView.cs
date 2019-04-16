@@ -9,6 +9,8 @@ public class PointCloudView : MonoBehaviour
     //public GameObject ColorSourceManager;
     //public GameObject DepthSourceManager;
     public GameObject MultiSourceManager;
+    [Range(0, 3)]
+    public int offset;
 
     private KinectSensor _Sensor;
     private CoordinateMapper _Mapper;
@@ -25,6 +27,7 @@ public class PointCloudView : MonoBehaviour
     private Color[] _Colors;
     private int[] _Indices;
 
+
     // Use this for initialization
     void Start()
     {
@@ -34,7 +37,6 @@ public class PointCloudView : MonoBehaviour
             _Mapper = _Sensor.CoordinateMapper;
             var frameDesc = _Sensor.DepthFrameSource.FrameDescription;
 
-            // TODO
             // _Mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = _Mesh;
             CreateMesh(frameDesc.Width / _DownsampleSize, frameDesc.Height / _DownsampleSize);
@@ -106,7 +108,6 @@ public class PointCloudView : MonoBehaviour
         CameraSpacePoint[] cameraSpace = new CameraSpacePoint[depthData.Length];
         _Mapper.MapDepthFrameToColorSpace(depthData, colorSpace);
         _Mapper.MapDepthFrameToCameraSpace(depthData, cameraSpace);
-        //_Mapper.MapCameraPointsToColorSpace(cameraSpace, colorSpace);
 
         for (int y = 0; y < frameDesc.Height; y += _DownsampleSize)
         {
@@ -114,60 +115,25 @@ public class PointCloudView : MonoBehaviour
             {
                 int indexX = x / _DownsampleSize;
                 int indexY = y / _DownsampleSize;
+                int offsetX = x + offset;
+                int offsetY = y + offset;
                 int smallIndex = (indexY * (frameDesc.Width / _DownsampleSize)) + indexX;
-                int fullIndex = (y * frameDesc.Width) + x;
-
-                //double avg = GetAvg(depthData, x, y, frameDesc.Width, frameDesc.Height);
-                double avg = GetAvg2(cameraSpace, x, y, frameDesc.Width, frameDesc.Height);
-
-
-                avg = avg * _DepthScale;
+                int fullIndex = (offsetY * frameDesc.Width) + offsetX;
 
                 _Vertices[smallIndex].z = cameraSpace[fullIndex].Z - 1;
-                //_Vertices[smallIndex].x = cameraSpace[fullIndex].X;
-                //_Vertices[smallIndex].y = cameraSpace[fullIndex].Y;
+
                 if (cameraSpace[fullIndex].X > -1000 && cameraSpace[smallIndex].X < 1000)
                     _Vertices[smallIndex].x = cameraSpace[fullIndex].X;
                 if (cameraSpace[fullIndex].Y > -1000 && cameraSpace[fullIndex].Y < 1000)
                     _Vertices[smallIndex].y = cameraSpace[fullIndex].Y;
-                //_Vertices[smallIndex] = transform.InverseTransformPoint(_Vertices[smallIndex]);
-                // TODO: downsampling
                 var colorSpacePoint = colorSpace[(y * frameDesc.Width) + x];
                 _Colors[smallIndex] = colorData.GetPixel((int) colorSpacePoint.X, (int) colorSpacePoint.Y);
-
-                // Update UV mapping with CDRP
-                //var colorSpacePoint = colorSpace[(y * frameDesc.Width) + x];
-                //_UV[smallIndex] = new Vector2(colorSpacePoint.X / colorWidth, colorSpacePoint.Y / colorHeight);
             }
         }
 
         _Mesh.vertices = _Vertices;
         _Mesh.colors = _Colors;
-        // TODO: make indices
         _Mesh.SetIndices(_Indices, MeshTopology.Points, 0);
-    }
-
-    private double GetAvg2(CameraSpacePoint[] depthData, int x, int y, int width, int height)
-    {
-        double sum = 0.0;
-
-        int n = _DownsampleSize ^ 2;
-
-        for (int y1 = y; y1 < y + _DownsampleSize; y1++)
-        {
-            for (int x1 = x; x1 < x + _DownsampleSize; x1++)
-            {
-                int fullIndex = (y1 * width) + x1;
-
-                if (depthData[fullIndex].Z == 0)
-                    sum += 4500;
-                else
-                    sum += depthData[fullIndex].Z;
-
-            }
-        }
-
-        return sum / n;
     }
 
     private double GetAvg(ushort[] depthData, int x, int y, int width, int height)
