@@ -260,7 +260,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu Screen
+  m_Text: Exit
 --- !u!222 &128206488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -681,6 +681,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611639803}
   m_CullTransparentMesh: 0
+--- !u!1 &630884340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630884342}
+  - component: {fileID: 630884341}
+  m_Layer: 0
+  m_Name: GestureManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &630884341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630884340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d349596370c725642897917bd0c96c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &630884342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630884340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.5, y: 171.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660022884
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,7 +958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &730348439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1020,6 +1063,7 @@ MonoBehaviour:
   hitBoxPreFab: {fileID: 249049249}
   planeObject: {fileID: 1864229720}
   scrollSpeed: 1
+  gestureManager: {fileID: 630884341}
 --- !u!4 &809719634
 Transform:
   m_ObjectHideFlags: 0
@@ -1276,7 +1320,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Record Screen
+  m_Text: Begin Recording
 --- !u!222 &858153802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1777,7 +1821,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gesture Screen
+  m_Text: Create Gesture
 --- !u!222 &1049500565
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1994,7 +2038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1550696149
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2517,6 +2561,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717593453}
   m_CullTransparentMesh: 0
+--- !u!1 &1734039863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734039865}
+  - component: {fileID: 1734039864}
+  m_Layer: 0
+  m_Name: FileWriter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1734039864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734039863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6708c408a370d31478453077bfb57df1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1734039865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734039863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.5, y: 171.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1736670513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2901,7 +2988,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Menu Screen
+  m_Text: Exit
 --- !u!222 &1948893872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3142,6 +3229,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223213074260012996, guid: a95649ae037dfa945bac218cbd36dc28,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.0725622
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223213074260012996, guid: a95649ae037dfa945bac218cbd36dc28,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.0725622
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223213074260012996, guid: a95649ae037dfa945bac218cbd36dc28,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.0725622
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a95649ae037dfa945bac218cbd36dc28, type: 3}

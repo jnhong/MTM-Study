@@ -5,7 +5,10 @@ using UnityEngine;
 public class HitBox : MonoBehaviour
 {
 
+    Gesture gesture;
     Renderer rend;
+
+    List<string> joints;
     
     // Start is called before the first frame update
     void Start()
@@ -14,31 +17,26 @@ public class HitBox : MonoBehaviour
         rend.material.color = new Color(0, 1, 0, 0.25f);
     }
 
-    /*
-    // Update is called once per frame
-    void Update()
+    public void setGesture(Gesture gesture)
     {
-        
+        this.gesture = gesture;
     }
-    */
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "HandLeft")
         {
             rend.material.color = new Color(1, 0, 0, 0.25f);
-            Debug.Log("OnTriggerEnter\n");
+            gesture.hit(gameObject);
         }
 
     }
-
     
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "HandLeft")
         {
             rend.material.color = new Color(0, 1, 0, 0.25f);
-            Debug.Log("OnTriggerExit\n");
         }
     }
     
