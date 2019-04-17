@@ -16,4 +16,9 @@ public class GestureManager : MonoBehaviour
         gestures.Add(gesture);
     }
 
+    public List<Gesture> gesturesList()
+    {
+        return gestures;
+    } 
+
 }

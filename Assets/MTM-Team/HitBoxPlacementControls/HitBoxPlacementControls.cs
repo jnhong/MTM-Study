@@ -69,18 +69,21 @@ public class HitBoxPlacementControls : MonoBehaviour
     private void onClick()
     {
         GameObject newHitBox = Instantiate(hitBox);
+        hitBox.SetActive(true);
         gesture.addHitBox(newHitBox);
         // DRAW line
     }
 
+    // submit new gesture to gesture manager then exit to menu screen
     private void onEnter()
     {
-        Debug.Log("on enter");
         gestureManager.addGesture(gesture);
         gesture.disableGesture();
-        gesture = new Gesture();
+        gesture = null;
+        gestureScreen.onMenuScreenButton();
     }
 
+    // exit to menu screen
     private void onEscape()
     {
         gestureScreen.onMenuScreenButton();
@@ -107,8 +110,11 @@ public class HitBoxPlacementControls : MonoBehaviour
     {
         planeObject.SetActive(false);
         hitBox.SetActive(false);
-        gesture.deleteGesture();
-        gesture = null;
+        if (gesture != null)
+        {
+            gesture.deleteGesture();
+            gesture = null;
+        }
     }
 }
 

@@ -8,22 +8,38 @@ public class ScrollList : MonoBehaviour
     private GestureManager gestureManager;
     [SerializeField]
     private GameObject buttonTemplate;
+    [SerializeField]
+    private GameObject content;
 
     public void populateList()
     {
-        for (int i = 0; i < 20; ++i)
+        List<Gesture> gestures = gestureManager.gesturesList();
+
+        for (int i = 0; i < gestures.Count; ++i)
         {
+            Gesture gesture = gestures[i];
             GameObject button = Instantiate(buttonTemplate);
+
+            button.GetComponent<ScrollListButton>().setGesture(gesture);
+            
             button.SetActive(true);
 
-            button.GetComponent<ScrollListButton>().setText("Button #" + i);
+            button.transform.SetParent(content.transform, false);
+        }
+    }
 
-            button.transform.SetParent(buttonTemplate.transform.parent, false);
+    public void clearList()
+    {
+        // destroy all children except first (which is the button template)
+        for (int i = content.transform.childCount - 1; i > 0; --i)
+        {
+            Destroy(content.transform.GetChild(i).gameObject);
         }
     }
 
     public void initialize()
     {
+        clearList();
         populateList();
     }
 

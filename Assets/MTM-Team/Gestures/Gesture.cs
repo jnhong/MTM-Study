@@ -6,13 +6,18 @@ public class Gesture
 {
     LinkedList<GameObject> hitBoxes; // the actual hitboxes are game objects
     LinkedListNode<GameObject> currentNode; // hitbox to be hit in sequence
-    string label;
+    public string label;
 
     public Gesture()
     {
         hitBoxes = new LinkedList<GameObject>();
         currentNode = null;
         label = "unlabeled";
+    }
+
+    public string getLabel()
+    {
+        return label;
     }
 
     public void setLabel(string label)
@@ -57,6 +62,14 @@ public class Gesture
     public GameObject getLastHitBox()
     {
         return hitBoxes.Last.Value;
+    }
+
+    public void enableGesture()
+    {
+        foreach (GameObject hitBox in hitBoxes)
+        {
+            hitBox.SetActive(true);
+        }
     }
 
     public void disableGesture()
