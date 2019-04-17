@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class CameraOrbit : MonoBehaviour
 {
-    public GameObject center;
-    public float distance;
-    public float angVel;
+    [SerializeField]
+    private GameObject center;
+    [SerializeField]
+    private float distance;
+    [SerializeField]
+    private float angVel;
 
     // Start is called before the first frame update
     void Start()

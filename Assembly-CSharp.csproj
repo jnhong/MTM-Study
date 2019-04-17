@@ -79,9 +79,11 @@
     <Compile Include="Assets\MTM-Team\HitBox\HitBox.cs" />
     <Compile Include="Assets\MTM-Team\HitBoxPlacementControls\HitBoxPlacementControls.cs" />
     <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
-    <Compile Include="Assets\MTM-Team\Screens\GestureScreen.cs" />
-    <Compile Include="Assets\MTM-Team\Screens\MenuScreen.cs" />
-    <Compile Include="Assets\MTM-Team\Screens\RecordScreen.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\GestureScreen\GestureScreen.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\MenuScreen\MenuScreen.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\MenuScreen\ScrollList.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\MenuScreen\ScrollListButton.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\RecordScreen\RecordScreen.cs" />
     <Compile Include="Assets\MTM-Team\Screens\StateManager.cs" />
     <Compile Include="Assets\MTM-Team\Utility\FileWriter.cs" />
     <None Include="Assets\MTM-Team\PointCloud\VertexColor.shader" />

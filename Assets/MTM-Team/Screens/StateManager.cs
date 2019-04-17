@@ -14,9 +14,12 @@ public class StateManager : MonoBehaviour
 
     Screen screen = Screen.Menu;
 
-    public MenuScreen menuScreen; 
-    public GestureScreen gestureScreen;
-    public RecordScreen recordScreen;
+    [SerializeField]
+    private MenuScreen menuScreen; 
+    [SerializeField]
+    private GestureScreen gestureScreen;
+    [SerializeField]
+    private RecordScreen recordScreen;
 
 
     // Start is called before the first frame update
@@ -38,6 +41,7 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Menu;
         menuScreen.gameObject.SetActive(true);
+        menuScreen.initialize();
     }
 
     public void toGestureScreen()

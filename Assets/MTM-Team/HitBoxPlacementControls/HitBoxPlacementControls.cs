@@ -5,11 +5,16 @@ using UnityEngine.EventSystems;
 
 public class HitBoxPlacementControls : MonoBehaviour
 {
-    public GameObject hitBoxPreFab;
-    public GameObject planeObject;
-    public float scrollSpeed = 10.0f;
-    public GestureManager gestureManager;
-    public GestureScreen gestureScreen;
+    [SerializeField]
+    private GameObject hitBoxPreFab;
+    [SerializeField]
+    private GameObject planeObject;
+    [SerializeField]
+    private float scrollSpeed = 10.0f;
+    [SerializeField]
+    private GestureManager gestureManager;
+    [SerializeField]
+    private GestureScreen gestureScreen;
 
     Plane plane;
     GameObject hitBox; // box to be place
