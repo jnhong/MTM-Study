@@ -20,6 +20,11 @@ public class StateManager : MonoBehaviour
     private GestureScreen gestureScreen;
     [SerializeField]
     private RecordScreen recordScreen;
+    [SerializeField]
+    private HitBoxPlacementControls hitBoxPlacementControls;
+    [SerializeField]
+    private CameraOrbitControls cameraOrbitControls;
+
 
 
     // Start is called before the first frame update
@@ -55,6 +60,18 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Record;
         recordScreen.gameObject.SetActive(true);
+    }
+
+    public void disableControls()
+    {
+        hitBoxPlacementControls.enabled = false;
+        cameraOrbitControls.enabled = false;
+    }
+
+    public void enableControls()
+    {
+        hitBoxPlacementControls.enabled = true;
+        cameraOrbitControls.enabled = true;
     }
 
 }

@@ -42,6 +42,7 @@ public class MenuScreen : MonoBehaviour
     public void initialize()
     {
         scrollList.initialize();
+        currentGestureText.text = "No gesture selected.";
     }
 
     public void uninitialize()

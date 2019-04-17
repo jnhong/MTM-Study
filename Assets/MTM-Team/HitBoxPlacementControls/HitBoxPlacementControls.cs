@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class HitBoxPlacementControls : MonoBehaviour
@@ -15,6 +16,8 @@ public class HitBoxPlacementControls : MonoBehaviour
     private GestureManager gestureManager;
     [SerializeField]
     private GestureScreen gestureScreen;
+    [SerializeField]
+    private InputField inputField;
 
     Plane plane;
     GameObject hitBox; // box to be place
@@ -97,6 +100,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     
     public void submitGesture()
     {
+        gesture.label = inputField.text;
         gestureManager.addGesture(gesture);
         gesture.disableGesture();
         gesture = null;
@@ -122,6 +126,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         } 
         hitBox.SetActive(true);
         gesture = new Gesture();
+        inputField.text = "unlabeled";
     }
 
     // call to exit gesture creation

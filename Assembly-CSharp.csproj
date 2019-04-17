@@ -71,7 +71,7 @@
     <Compile Include="Assets\KinectView\Scripts\InfraredSourceManager.cs" />
     <Compile Include="Assets\KinectView\Scripts\InfraredSourceView.cs" />
     <Compile Include="Assets\KinectView\Scripts\MultiSourceManager.cs" />
-    <Compile Include="Assets\MTM-Team\Camera\CameraOrbit.cs" />
+    <Compile Include="Assets\MTM-Team\Camera\CameraOrbitControls.cs" />
     <Compile Include="Assets\MTM-Team\Camera\CombinedMouseLookAndCameraMove.cs" />
     <Compile Include="Assets\MTM-Team\Camera\FlyCamera.cs" />
     <Compile Include="Assets\MTM-Team\Gestures\Gesture.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="Assets\MTM-Team\HitBox\HitBox.cs" />
     <Compile Include="Assets\MTM-Team\HitBoxPlacementControls\HitBoxPlacementControls.cs" />
     <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\GestureScreen\CustomInputField.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\GestureScreen.cs" />
     <Compile Include="Assets\MTM-Team\Screens\MenuScreen\GestureScrollList.cs" />
     <Compile Include="Assets\MTM-Team\Screens\MenuScreen\GestureScrollListButton.cs" />
