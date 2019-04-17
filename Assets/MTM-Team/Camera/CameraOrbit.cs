@@ -12,12 +12,16 @@ public class CameraOrbit : MonoBehaviour
     private float angVel;
     [SerializeField]
     private float initialPitchAngle;
+    [SerializeField]
+    private float scrollSpeed;
+    [SerializeField]
+    private float minZoom;
+    [SerializeField]
+    private float maxZoom;
 
     // Start is called before the first frame update
     void Start()
     {
-        angVel = 100.0f;
-        distance = 60.0f;
 
         // initialize position 
         if (center != null)
@@ -49,9 +53,23 @@ public class CameraOrbit : MonoBehaviour
         }
     }
 
+    private void updateZoom()
+    {
+        float zoomFactor = - Input.mouseScrollDelta.y * scrollSpeed;
+        Vector3 diff = gameObject.transform.position - center.transform.position;
+        diff += diff * zoomFactor;
+        if (diff.magnitude > minZoom && diff.magnitude < maxZoom)
+        {
+            gameObject.transform.position = center.transform.position + diff;
+            gameObject.transform.LookAt(center.transform);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
+        updateZoom();
+
         // move camera
         if (Input.GetKey(KeyCode.D)) // right
         {

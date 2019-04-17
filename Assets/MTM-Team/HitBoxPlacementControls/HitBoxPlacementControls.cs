@@ -10,7 +10,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     [SerializeField]
     private GameObject planeObject;
     [SerializeField]
-    private float scrollSpeed = 10.0f;
+    private float planeSpeed = 10.0f;
     [SerializeField]
     private GestureManager gestureManager;
     [SerializeField]
@@ -26,8 +26,6 @@ public class HitBoxPlacementControls : MonoBehaviour
         // move the hitbox under the mouse
         updateMouseHitBox();
 
-        updatePlane();
-
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             onClick();
@@ -42,11 +40,21 @@ public class HitBoxPlacementControls : MonoBehaviour
         {
             onEnter();
         }
+
+        if (Input.GetKey(KeyCode.Q)) // move plane down 
+        {
+            updatePlane(Time.deltaTime * - planeSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.E)) // move plane up 
+        {
+            updatePlane(Time.deltaTime * planeSpeed);
+        }
     }
 
-    private void updatePlane()
+    private void updatePlane(float deltaY)
     {
-        Vector3 offset = new Vector3(0, Input.mouseScrollDelta.y * scrollSpeed, 0);
+        Vector3 offset = new Vector3(0, deltaY, 0);
         plane = Plane.Translate(plane, -offset);
         planeObject.transform.position += offset;
         hitBox.transform.position += offset;
