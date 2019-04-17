@@ -10,6 +10,8 @@ public class CameraOrbit : MonoBehaviour
     private float distance;
     [SerializeField]
     private float angVel;
+    [SerializeField]
+    private float initialPitchAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,21 @@ public class CameraOrbit : MonoBehaviour
         Vector3 diff = new Vector3(0, 0, -distance);
         gameObject.transform.position = center.transform.position + diff;
         gameObject.transform.LookAt(center.transform);
+        rotateUp();
+    }
+    
+    private void rotateUp()
+    {
+        Vector3 relPos = gameObject.transform.position - center.transform.position;
+        if (Vector3.Angle(relPos, Vector3.up) > 20)
+        {
+            Vector3 rotAxis = Vector3.Cross(relPos, Vector3.up);
+            transform.RotateAround(center.transform.position, rotAxis, initialPitchAngle);
+        }
+        if (center != null)
+        {
+            gameObject.transform.LookAt(center.transform);
+        }
     }
 
     // Update is called once per frame

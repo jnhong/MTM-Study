@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScrollListButton : MonoBehaviour
+public class GestureScrollListButton : MonoBehaviour
 {
     [SerializeField]
     private MenuScreen menuScreen;
     [SerializeField]
-    private ScrollList scrollList;
+    private GestureScrollList scrollList;
     [SerializeField]
     private Text textChild;
 
@@ -21,14 +21,12 @@ public class ScrollListButton : MonoBehaviour
 
     public void setGesture(Gesture gesture)
     {
-        Debug.Log("scroll list button set gesture");
         this.gesture = gesture;
         setText(gesture.getLabel());
     }
 
     public void onClick()
     {
-        Debug.Log("scroll list button click");
         menuScreen.focusGesture(gesture);
     }
 

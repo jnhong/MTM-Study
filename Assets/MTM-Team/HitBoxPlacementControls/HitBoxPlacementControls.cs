@@ -26,6 +26,8 @@ public class HitBoxPlacementControls : MonoBehaviour
         // move the hitbox under the mouse
         updateMouseHitBox();
 
+        updatePlane();
+
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             onClick();
@@ -40,6 +42,14 @@ public class HitBoxPlacementControls : MonoBehaviour
         {
             onEnter();
         }
+    }
+
+    private void updatePlane()
+    {
+        Vector3 offset = new Vector3(0, Input.mouseScrollDelta.y * scrollSpeed, 0);
+        plane = Plane.Translate(plane, -offset);
+        planeObject.transform.position += offset;
+        hitBox.transform.position += offset;
     }
 
     private void updateMouseHitBox()
@@ -60,10 +70,6 @@ public class HitBoxPlacementControls : MonoBehaviour
             //Move your cube GameObject to the point where you clicked
             hitBox.transform.position = hitPoint;
         }
-        Vector3 offset = new Vector3(0, Input.mouseScrollDelta.y * scrollSpeed, 0);
-        plane = Plane.Translate(plane, -offset);
-        planeObject.transform.position += offset;
-        hitBox.transform.position += offset;
     }
 
     private void onClick()
@@ -77,10 +83,15 @@ public class HitBoxPlacementControls : MonoBehaviour
     // submit new gesture to gesture manager then exit to menu screen
     private void onEnter()
     {
+        submitGesture();
+        gestureScreen.onMenuScreenButton();
+    }
+    
+    public void submitGesture()
+    {
         gestureManager.addGesture(gesture);
         gesture.disableGesture();
         gesture = null;
-        gestureScreen.onMenuScreenButton();
     }
 
     // exit to menu screen

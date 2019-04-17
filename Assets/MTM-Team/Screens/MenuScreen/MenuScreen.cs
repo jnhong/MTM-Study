@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuScreen : MonoBehaviour
 {
     [SerializeField]
     private StateManager stateManager;
     [SerializeField]
-    private ScrollList scrollList;
+    private GestureScrollList scrollList;
+    [SerializeField]
+    private Text currentGestureText;
 
     private Gesture gesture; // gesture of focus
 
@@ -28,6 +31,12 @@ public class MenuScreen : MonoBehaviour
         gameObject.SetActive(false);
         stateManager.toRecordScreen();
         uninitialize();
+    }
+    
+    public void onQuitButton()
+    {
+        Debug.Log("Application quit.");
+        Application.Quit();
     }
 
     public void initialize()
@@ -52,5 +61,6 @@ public class MenuScreen : MonoBehaviour
     
         this.gesture = gesture;
         gesture.enableGesture();
+        currentGestureText.text = gesture.label;
     }
 }

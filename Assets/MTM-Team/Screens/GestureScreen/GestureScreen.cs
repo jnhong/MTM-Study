@@ -27,4 +27,10 @@ public class GestureScreen : MonoBehaviour
         stateManager.toMenuScreen();
         uninitialize();
     }
+    
+    public void onSubmitButton()
+    {
+        controls.submitGesture();
+        onMenuScreenButton();
+    }
 }

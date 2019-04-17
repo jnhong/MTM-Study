@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollList : MonoBehaviour
+public class GestureScrollList : MonoBehaviour
 {
     [SerializeField]
     private GestureManager gestureManager;
@@ -20,7 +20,7 @@ public class ScrollList : MonoBehaviour
             Gesture gesture = gestures[i];
             GameObject button = Instantiate(buttonTemplate);
 
-            button.GetComponent<ScrollListButton>().setGesture(gesture);
+            button.GetComponent<GestureScrollListButton>().setGesture(gesture);
             
             button.SetActive(true);
 
@@ -36,11 +36,16 @@ public class ScrollList : MonoBehaviour
             Destroy(content.transform.GetChild(i).gameObject);
         }
     }
-
-    public void initialize()
+    
+    public void refresh()
     {
         clearList();
         populateList();
+    }
+
+    public void initialize()
+    {
+        refresh();
     }
 
 }
