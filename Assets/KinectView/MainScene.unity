@@ -2698,6 +2698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateManager: {fileID: 1274119570}
+  gestureManager: {fileID: 630884341}
+  fileWriter: {fileID: 1734039864}
 --- !u!1 &858153799
 GameObject:
   m_ObjectHideFlags: 0
@@ -5578,7 +5580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1734039864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5591,9 +5593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6708c408a370d31478453077bfb57df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  path: 
-  filename: 
-  scrollPosition: {x: 0, y: 0}
 --- !u!4 &1734039865
 Transform:
   m_ObjectHideFlags: 0

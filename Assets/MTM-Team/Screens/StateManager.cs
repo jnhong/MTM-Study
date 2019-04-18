@@ -60,6 +60,7 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Record;
         recordScreen.gameObject.SetActive(true);
+        recordScreen.initialize();
     }
 
     public void disableControls()

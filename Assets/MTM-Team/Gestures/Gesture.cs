@@ -8,6 +8,9 @@ public class Gesture
     LinkedListNode<GameObject> currentNode; // hitbox to be hit in sequence
     List<Vector3> points;
     LineRenderer lineRenderer;
+    bool recording;
+
+    FileWriter fileWriter;
 
     public string label;
 
@@ -22,6 +25,8 @@ public class Gesture
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.widthMultiplier = 0.2f;
         lineRenderer.material.color = Color.yellow;
+        recording = false;
+        fileWriter = GameObject.Find("FileWriter").GetComponent<FileWriter>();
     }
 
     public string getLabel()
@@ -32,6 +37,20 @@ public class Gesture
     public void setLabel(string label)
     {
         this.label = label;
+    }
+    
+    public void beginRecording()
+    {
+        resetSequence();
+        recording = true;
+        enableGesture();
+    }
+
+    public void endRecording()
+    {
+        resetSequence();
+        recording = false;
+        disableGesture();
     }
 
     public void resetSequence()
@@ -66,7 +85,10 @@ public class Gesture
     public void onSequenceCompletion()
     {
         // do something
-        Debug.Log("Gesture Completed");
+        if (recording)
+        {
+            fileWriter.write(label);
+        }
     }
 
     public void addHitBox(GameObject hitBox)

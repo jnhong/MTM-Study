@@ -88,7 +88,6 @@ public class HitBoxPlacementControls : MonoBehaviour
         GameObject newHitBox = Instantiate(hitBox);
         hitBox.SetActive(true);
         gesture.addHitBox(newHitBox);
-        // DRAW line
     }
 
     // submit new gesture to gesture manager then exit to menu screen

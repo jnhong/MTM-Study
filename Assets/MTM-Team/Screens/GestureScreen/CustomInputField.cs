@@ -12,19 +12,16 @@ public class CustomInputField : MonoBehaviour, ISelectHandler, IDeselectHandler
     //Do this when the selectable UI object is selected.
     public void OnSelect(BaseEventData eventData)
     {
-        Debug.Log("inputfield selected");
         stateManager.disableControls();
     }
 
     public void OnDeselect(BaseEventData data)
     {
-        Debug.Log("input field deselected");
         stateManager.enableControls();
     }
 
     public void OnDeselect()
     {
-        Debug.Log("input field deselected");
         stateManager.enableControls();
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FileWriter : MonoBehaviour
 {
+    /*
     public string path;
     public string filename;
     public Vector2 scrollPosition = Vector2.zero;
@@ -28,5 +29,11 @@ public class FileWriter : MonoBehaviour
         scrollPosition = GUI.BeginScrollView(new Rect(Screen.width - 110, Screen.height - 110, 100, 100), scrollPosition, new Rect(0, 0, 80, 200));
         GUI.TextArea(new Rect(0, 0, 80, 200), log);
         GUI.EndScrollView();
+    }
+    */
+
+    public void write(string s)
+    {
+        Debug.Log(s);
     }
 }
