@@ -6,6 +6,9 @@ public class Gesture
 {
     LinkedList<GameObject> hitBoxes; // the actual hitboxes are game objects
     LinkedListNode<GameObject> currentNode; // hitbox to be hit in sequence
+    List<Vector3> points;
+    LineRenderer lineRenderer;
+
     public string label;
 
     public Gesture()
@@ -13,6 +16,12 @@ public class Gesture
         hitBoxes = new LinkedList<GameObject>();
         currentNode = null;
         label = "unlabeled";
+        points = new List<Vector3>();
+        lineRenderer = new GameObject("Line").AddComponent<LineRenderer>();
+        lineRenderer.positionCount = 0;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.widthMultiplier = 0.2f;
+        lineRenderer.material.color = Color.yellow;
     }
 
     public string getLabel()
@@ -64,10 +73,20 @@ public class Gesture
     {
         hitBoxes.AddLast(hitBox);
         hitBox.GetComponent<HitBox>().setGesture(this);
+        points.Add(hitBox.transform.position);
         if (hitBoxes.Count == 1)
         {
             hitBox.GetComponent<HitBox>().highlight();
+        } else // draw lines
+        {
+            updateLine();
         }
+    }
+
+    private void updateLine()
+    {
+        lineRenderer.positionCount = points.Count;
+        lineRenderer.SetPositions(points.ToArray());
     }
 
     public GameObject getLastHitBox()
@@ -82,6 +101,7 @@ public class Gesture
             hitBox.SetActive(true);
         }
         resetSequence();
+        updateLine();
     }
 
     public void disableGesture()
@@ -90,6 +110,7 @@ public class Gesture
         {
             hitBox.SetActive(false);
         }
+        lineRenderer.positionCount = 0;
     }
 
     public void deleteGesture()
@@ -99,6 +120,9 @@ public class Gesture
             Object.Destroy(hitBox);
         }
         hitBoxes.Clear();
+        lineRenderer.positionCount = 0;
+        GameObject.Destroy(lineRenderer.gameObject);
+        lineRenderer = null;
     }
 
 }
