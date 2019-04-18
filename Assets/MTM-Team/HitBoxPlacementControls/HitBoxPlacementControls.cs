@@ -13,15 +13,10 @@ public class HitBoxPlacementControls : MonoBehaviour
     [SerializeField]
     private float planeSpeed = 10.0f;
     [SerializeField]
-    private GestureManager gestureManager;
-    [SerializeField]
     private GestureScreen gestureScreen;
-    [SerializeField]
-    private InputField inputField;
 
     Plane plane;
-    GameObject hitBox; // box to be place
-    Gesture gesture; // sequence of hitboxes
+    GameObject mouseHitBox; // box to be place
 
     // Update is called once per frame
     void Update()
@@ -60,7 +55,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         Vector3 offset = new Vector3(0, deltaY, 0);
         plane = Plane.Translate(plane, -offset);
         planeObject.transform.position += offset;
-        hitBox.transform.position += offset;
+        mouseHitBox.transform.position += offset;
     }
 
     private void updateMouseHitBox()
@@ -79,32 +74,23 @@ public class HitBoxPlacementControls : MonoBehaviour
             Vector3 hitPoint = ray.GetPoint(enter);
 
             //Move your cube GameObject to the point where you clicked
-            hitBox.transform.position = hitPoint;
+            mouseHitBox.transform.position = hitPoint;
         }
     }
 
     private void onClick()
     {
-        GameObject newHitBox = Instantiate(hitBox);
-        hitBox.SetActive(true);
-        gesture.addHitBox(newHitBox);
+        GameObject newHitBox = Instantiate(mouseHitBox);
+        gestureScreen.addHitBox(newHitBox);
     }
 
     // submit new gesture to gesture manager then exit to menu screen
     private void onEnter()
     {
-        submitGesture();
+        gestureScreen.submitGesture();
         gestureScreen.onMenuScreenButton();
     }
     
-    public void submitGesture()
-    {
-        gesture.label = inputField.text;
-        gestureManager.addGesture(gesture);
-        gesture.disableGesture();
-        gesture = null;
-    }
-
     // exit to menu screen
     private void onEscape()
     {
@@ -119,25 +105,18 @@ public class HitBoxPlacementControls : MonoBehaviour
         planeObject.transform.localScale = new Vector3(10, 10, 10);
         planeObject.SetActive(true);
         plane = new Plane(planeObject.transform.up, planeObject.transform.position);
-        if (!hitBox)
+        if (!mouseHitBox)
         {
-            hitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
+            mouseHitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
         } 
-        hitBox.SetActive(true);
-        gesture = new Gesture();
-        inputField.text = "unlabeled";
+        mouseHitBox.SetActive(true);
     }
 
     // call to exit gesture creation
     public void uninitialize()
     {
         planeObject.SetActive(false);
-        hitBox.SetActive(false);
-        if (gesture != null)
-        {
-            gesture.deleteGesture();
-            gesture = null;
-        }
+        mouseHitBox.SetActive(false);
     }
 }
 

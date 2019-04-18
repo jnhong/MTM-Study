@@ -81,6 +81,8 @@
     <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\CustomInputField.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\GestureScreen.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\GestureScreen\HitBoxScrollList.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\GestureScreen\HitBoxScrollListButton.cs" />
     <Compile Include="Assets\MTM-Team\Screens\MenuScreen\GestureScrollList.cs" />
     <Compile Include="Assets\MTM-Team\Screens\MenuScreen\GestureScrollListButton.cs" />
     <Compile Include="Assets\MTM-Team\Screens\MenuScreen\MenuScreen.cs" />

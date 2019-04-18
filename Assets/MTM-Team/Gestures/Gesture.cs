@@ -39,6 +39,11 @@ public class Gesture
         this.label = label;
     }
     
+    public int getCount()
+    {
+        return hitBoxes.Count;
+    }
+    
     public void beginRecording()
     {
         resetSequence();

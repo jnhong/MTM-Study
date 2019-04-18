@@ -30,7 +30,4 @@ public class GestureScrollListButton : MonoBehaviour
         menuScreen.focusGesture(gesture);
     }
 
-
-
-
 }
