@@ -16,4 +16,33 @@ public class GestureManager : MonoBehaviour
         gestures.Add(gesture);
     }
 
+    public void removeGesture(Gesture gesture)
+    {
+        gestures.Remove(gesture);
+    }
+
+    public List<Gesture> gesturesList()
+    {
+        return gestures;
+    } 
+
+    public void beginRecording()
+    {
+        foreach (Gesture gesture in gestures)
+        {
+            //Debug.Log("begin recording: " + gesture.label);
+            gesture.beginRecording();
+        }
+    }
+
+    public void endRecording()
+    {
+        foreach (Gesture gesture in gestures)
+        {
+            //Debug.Log("end recording: " + gesture.label);
+            gesture.endRecording();
+        }
+    }
+    
+
 }

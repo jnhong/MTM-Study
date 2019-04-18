@@ -1,19 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class HitBoxPlacementControls : MonoBehaviour
 {
-    public GameObject hitBoxPreFab;
-    public GameObject planeObject;
-    public float scrollSpeed = 10.0f;
-    public GestureManager gestureManager;
-    public GestureScreen gestureScreen;
+    [SerializeField]
+    private GameObject hitBoxPreFab;
+    [SerializeField]
+    private GameObject planeObject;
+    [SerializeField]
+    private float planeSpeed = 10.0f;
+    [SerializeField]
+    private GestureScreen gestureScreen;
 
     Plane plane;
-    GameObject hitBox; // box to be place
-    Gesture gesture; // sequence of hitboxes
+    GameObject mouseHitBox; // box to be place
 
     // Update is called once per frame
     void Update()
@@ -35,6 +38,24 @@ public class HitBoxPlacementControls : MonoBehaviour
         {
             onEnter();
         }
+
+        if (Input.GetKey(KeyCode.Q)) // move plane down 
+        {
+            updatePlane(Time.deltaTime * - planeSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.E)) // move plane up 
+        {
+            updatePlane(Time.deltaTime * planeSpeed);
+        }
+    }
+
+    private void updatePlane(float deltaY)
+    {
+        Vector3 offset = new Vector3(0, deltaY, 0);
+        plane = Plane.Translate(plane, -offset);
+        planeObject.transform.position += offset;
+        mouseHitBox.transform.position += offset;
     }
 
     private void updateMouseHitBox()
@@ -53,29 +74,24 @@ public class HitBoxPlacementControls : MonoBehaviour
             Vector3 hitPoint = ray.GetPoint(enter);
 
             //Move your cube GameObject to the point where you clicked
-            hitBox.transform.position = hitPoint;
+            mouseHitBox.transform.position = hitPoint;
         }
-        Vector3 offset = new Vector3(0, Input.mouseScrollDelta.y * scrollSpeed, 0);
-        plane = Plane.Translate(plane, -offset);
-        planeObject.transform.position += offset;
-        hitBox.transform.position += offset;
     }
 
     private void onClick()
     {
-        GameObject newHitBox = Instantiate(hitBox);
-        gesture.addHitBox(newHitBox);
-        // DRAW line
+        GameObject newHitBox = Instantiate(mouseHitBox);
+        gestureScreen.addHitBox(newHitBox);
     }
 
+    // submit new gesture to gesture manager then exit to menu screen
     private void onEnter()
     {
-        Debug.Log("on enter");
-        gestureManager.addGesture(gesture);
-        gesture.disableGesture();
-        gesture = new Gesture();
+        gestureScreen.submitGesture();
+        gestureScreen.onMenuScreenButton();
     }
-
+    
+    // exit to menu screen
     private void onEscape()
     {
         gestureScreen.onMenuScreenButton();
@@ -89,21 +105,18 @@ public class HitBoxPlacementControls : MonoBehaviour
         planeObject.transform.localScale = new Vector3(10, 10, 10);
         planeObject.SetActive(true);
         plane = new Plane(planeObject.transform.up, planeObject.transform.position);
-        if (!hitBox)
+        if (!mouseHitBox)
         {
-            hitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
+            mouseHitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
         } 
-        hitBox.SetActive(true);
-        gesture = new Gesture();
+        mouseHitBox.SetActive(true);
     }
 
     // call to exit gesture creation
     public void uninitialize()
     {
         planeObject.SetActive(false);
-        hitBox.SetActive(false);
-        gesture.deleteGesture();
-        gesture = null;
+        mouseHitBox.SetActive(false);
     }
 }
 

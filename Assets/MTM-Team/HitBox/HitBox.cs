@@ -9,12 +9,38 @@ public class HitBox : MonoBehaviour
     Renderer rend;
 
     List<string> joints;
+
+    Color green;
+    Color yellow;
+    Color red;
+
+    Color inactiveColor;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        initialize();
+    }
+
+    private void initialize()
+    {
+        green = new Color(0, 1, 0, 0.25f);
+        yellow = new Color(1, 1, 0, 0.25f);
+        red = new Color(1, 0, 0, 0.25f);
         rend = GetComponent<Renderer>();
-        rend.material.color = new Color(0, 1, 0, 0.25f);
+        inactiveColor = green;
+        rend.material.color = inactiveColor;
+    }
+
+    public void highlight()
+    {
+        inactiveColor = yellow;
+        rend.material.color = inactiveColor;
+    }
+
+    public void unhighlight()
+    {
+        inactiveColor = green;
+        rend.material.color = inactiveColor;
     }
 
     public void setGesture(Gesture gesture)
@@ -26,7 +52,7 @@ public class HitBox : MonoBehaviour
     {
         if (other.gameObject.name == "HandLeft")
         {
-            rend.material.color = new Color(1, 0, 0, 0.25f);
+            rend.material.color = red;
             if (gesture != null)
             {
                 gesture.hit(gameObject);
@@ -39,7 +65,7 @@ public class HitBox : MonoBehaviour
     {
         if (other.gameObject.name == "HandLeft")
         {
-            rend.material.color = new Color(0, 1, 0, 0.25f);
+            rend.material.color = inactiveColor;
         }
     }
     

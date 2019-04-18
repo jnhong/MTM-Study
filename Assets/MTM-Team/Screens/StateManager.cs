@@ -14,9 +14,19 @@ public class StateManager : MonoBehaviour
 
     Screen screen = Screen.Menu;
 
-    public MenuScreen menuScreen; 
-    public GestureScreen gestureScreen;
-    public RecordScreen recordScreen;
+    [SerializeField]
+    private MenuScreen menuScreen; 
+    [SerializeField]
+    private GestureScreen gestureScreen;
+    [SerializeField]
+    private RecordScreen recordScreen;
+    [SerializeField]
+    private HitBoxPlacementControls hitBoxPlacementControls;
+    [SerializeField]
+    private CameraOrbitControls cameraOrbitControls;
+    [SerializeField]
+    private DemoScreen demoScreen;
+
 
 
     // Start is called before the first frame update
@@ -25,6 +35,7 @@ public class StateManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
         gestureScreen.gameObject.SetActive(false);
         recordScreen.gameObject.SetActive(false);
+        demoScreen.gameObject.SetActive(false);
 
         toMenuScreen();
     }
@@ -38,6 +49,7 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Menu;
         menuScreen.gameObject.SetActive(true);
+        menuScreen.initialize();
     }
 
     public void toGestureScreen()
@@ -51,6 +63,19 @@ public class StateManager : MonoBehaviour
     {
         screen = Screen.Record;
         recordScreen.gameObject.SetActive(true);
+        recordScreen.initialize();
+    }
+
+    public void disableControls()
+    {
+        hitBoxPlacementControls.enabled = false;
+        cameraOrbitControls.enabled = false;
+    }
+
+    public void enableControls()
+    {
+        hitBoxPlacementControls.enabled = true;
+        cameraOrbitControls.enabled = true;
     }
 
 }
