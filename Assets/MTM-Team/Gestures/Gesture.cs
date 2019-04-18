@@ -86,6 +86,7 @@ public class Gesture
         {
             Object.Destroy(hitBox);
         }
+        hitBoxes.Clear();
     }
 
 }

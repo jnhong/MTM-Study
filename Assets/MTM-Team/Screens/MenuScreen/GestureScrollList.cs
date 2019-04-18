@@ -48,4 +48,10 @@ public class GestureScrollList : MonoBehaviour
         refresh();
     }
 
+    public void removeGesture(Gesture gesture)
+    {
+        gestureManager.removeGesture(gesture);
+        refresh();
+    }
+
 }

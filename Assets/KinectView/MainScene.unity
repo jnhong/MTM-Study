@@ -829,9 +829,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Edit
-
-'
+  m_Text: Delete
 --- !u!222 &261341726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1127,7 +1125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000007307205, y: -0.000010417308}
+  m_AnchoredPosition: {x: -0.0000073165693, y: -0.000018320196}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &366443927
@@ -1482,7 +1480,7 @@ MonoBehaviour:
   m_Content: {fileID: 366443926}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -3749,7 +3747,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1789454687}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4427,7 +4425,7 @@ GameObject:
   - component: {fileID: 1439945220}
   - component: {fileID: 1439945219}
   m_Layer: 5
-  m_Name: Edit
+  m_Name: DeleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4492,7 +4490,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1439945220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 730348442}
+        m_MethodName: onDeleteButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1439945220
@@ -4593,7 +4602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1491511315
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4609,7 +4618,7 @@ RectTransform:
   - {fileID: 1379529841}
   - {fileID: 268983781}
   m_Father: {fileID: 1550696149}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4716,8 +4725,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1898497451}
-  - {fileID: 1696594320}
   - {fileID: 1491511315}
+  - {fileID: 1696594320}
   - {fileID: 1035949737}
   - {fileID: 403759630}
   m_Father: {fileID: 1274119569}
@@ -4922,7 +4931,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: No gesture selected.
 --- !u!222 &1604876288
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5249,7 +5258,7 @@ RectTransform:
   - {fileID: 1075122734}
   - {fileID: 1404377462}
   m_Father: {fileID: 1550696149}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

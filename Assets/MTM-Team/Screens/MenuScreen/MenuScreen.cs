@@ -14,6 +14,8 @@ public class MenuScreen : MonoBehaviour
 
     private Gesture gesture; // gesture of focus
 
+    private string defaultLabel = "No gesture selected.";
+
     public void setGesture(Gesture gesture)
     {
         this.gesture = gesture;
@@ -39,10 +41,21 @@ public class MenuScreen : MonoBehaviour
         Application.Quit();
     }
 
+    public void onDeleteButton()
+    {
+        if (gesture != null)
+        {
+            scrollList.removeGesture(gesture);
+            gesture.deleteGesture();
+            gesture = null;
+            currentGestureText.text = defaultLabel;
+        }
+    }
+
     public void initialize()
     {
         scrollList.initialize();
-        currentGestureText.text = "No gesture selected.";
+        currentGestureText.text = defaultLabel;
     }
 
     public void uninitialize()
@@ -64,4 +77,5 @@ public class MenuScreen : MonoBehaviour
         gesture.enableGesture();
         currentGestureText.text = gesture.label;
     }
+
 }
