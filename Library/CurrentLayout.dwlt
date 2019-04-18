@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 681, y: 348}
   m_MaxSize: {x: 12006, y: 8048}
   vertical: 0
-  controlID: 108
+  controlID: 10
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 348}
   m_MaxSize: {x: 8004, y: 8048}
   vertical: 1
-  controlID: 72
+  controlID: 11
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 224}
   m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 73
+  controlID: 12
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -381,9 +381,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: ca080000
       m_LastClickedID: 0
-      m_ExpandedIDs: d4fbffffb00d0000be0e0000
+      m_ExpandedIDs: d4fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -438,9 +438,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 186.83961, y: 184.52953, z: -2.3562865}
+    m_Target: {x: 85.17535, y: 198.13214, z: -4.1696267}
     speed: 2
-    m_Value: {x: 186.83961, y: 184.52953, z: -2.3562865}
+    m_Value: {x: 85.17535, y: 198.13214, z: -4.1696267}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -472,9 +472,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 439.90704
+    m_Target: 620.54004
     speed: 2
-    m_Value: 439.90704
+    m_Value: 620.54004
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -533,10 +533,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1
-    y: 603
+    x: 8
+    y: 599
     width: 1488
-    height: 396
+    height: 393
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -550,20 +550,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/MTM-Team/Gestures
+    - Assets/MTM-Team/HitBoxPlacementControls
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/MTM-Team/Gestures
+  - Assets/MTM-Team/HitBoxPlacementControls
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\hidde\Documents\MTM-Study
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 520c0000
-    m_LastClickedID: 3154
-    m_ExpandedIDs: 00000000480a00005e0a0000940a0000d20a00003a0b0000560b0000800b00009c0b0000f00b0000
+    m_SelectedIDs: 5e0a0000
+    m_LastClickedID: 2654
+    m_ExpandedIDs: 00000000480a00005e0a0000940a0000d20a00003a0b0000560b0000800b00009c0b0000f00b000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -616,8 +616,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: ce070000
-    m_LastClickedInstanceID: 1998
+    m_SelectedInstanceIDs: ca080000
+    m_LastClickedInstanceID: 2250
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:

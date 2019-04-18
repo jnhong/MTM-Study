@@ -27,7 +27,12 @@ public class Gesture
 
     public void resetSequence()
     {
+        if (currentNode != null)
+        {
+            currentNode.Value.GetComponent<HitBox>().unhighlight();
+        }
         currentNode = hitBoxes.First;
+        currentNode.Value.GetComponent<HitBox>().highlight();
     }
 
     public void hit(GameObject hitBox)
@@ -41,7 +46,9 @@ public class Gesture
                 onSequenceCompletion();
             } else
             {
+                currentNode.Value.GetComponent<HitBox>().unhighlight();
                 currentNode = currentNode.Next;
+                currentNode.Value.GetComponent<HitBox>().highlight();
             }
         }
         // else ignore
@@ -57,6 +64,10 @@ public class Gesture
     {
         hitBoxes.AddLast(hitBox);
         hitBox.GetComponent<HitBox>().setGesture(this);
+        if (hitBoxes.Count == 1)
+        {
+            hitBox.GetComponent<HitBox>().highlight();
+        }
     }
 
     public GameObject getLastHitBox()
@@ -70,6 +81,7 @@ public class Gesture
         {
             hitBox.SetActive(true);
         }
+        resetSequence();
     }
 
     public void disableGesture()
