@@ -14,15 +14,42 @@ public class HitBoxPlacementControls : MonoBehaviour
     private float planeSpeed = 10.0f;
     [SerializeField]
     private GestureScreen gestureScreen;
+    [SerializeField]
+    private AddHitBox addButton;
+    
+    enum Mode 
+    {
+        Off, // neither
+        Move, // move a pre-existing box
+        Place // place a new box
+    }
+
+    Mode mode;
 
     Plane plane;
     GameObject mouseHitBox; // box to be place
+    GameObject moveHitBox; // box to be moved 
+    bool setMove;
+    GameObject oldHitBox;
 
     // Update is called once per frame
     void Update()
     {
         // move the hitbox under the mouse
-        updateMouseHitBox();
+        switch (mode)
+        {
+            case Mode.Off:
+                break;
+            case Mode.Move:
+                updateMoveHitBox();
+                break;
+            case Mode.Place:
+                updateMouseHitBox();
+                break;
+            default:
+                Debug.Log("error: hit box controls in unknown state");
+                break;
+        }
 
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
@@ -78,10 +105,55 @@ public class HitBoxPlacementControls : MonoBehaviour
         }
     }
 
+    private void updateMoveHitBox()
+    {
+        // get ray from camera
+        // intersect with plane
+        // move box to new position on plane
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        float enter = 0.0f;
+
+        if (plane.Raycast(ray, out enter))
+        {
+            //Get the point that is clicked
+            Vector3 hitPoint = ray.GetPoint(enter);
+
+            //Move your cube GameObject to the point where you clicked
+            moveHitBox.transform.position = hitPoint;
+            moveHitBox.GetComponent<HitBox>().refreshLine();
+        }
+    }
+
     private void onClick()
+    {
+        switch (mode)
+        {
+            case Mode.Off:
+                break;
+            case Mode.Move:
+                onClickMovement();
+                break;
+            case Mode.Place:
+                onClickPlacement();
+                break;
+            default:
+                Debug.Log("error: hit box controls in unknown state");
+                break;
+        }
+    }
+
+    private void onClickPlacement()
     {
         GameObject newHitBox = Instantiate(mouseHitBox);
         gestureScreen.addHitBox(newHitBox);
+    }
+
+    private void onClickMovement()
+    {
+        setMove = true;
+        endMovement();
     }
 
     // submit new gesture to gesture manager then exit to menu screen
@@ -100,23 +172,101 @@ public class HitBoxPlacementControls : MonoBehaviour
     // call to begin gesture creation
     public void initialize()
     {
+        // set up plane and mode
         Vector3 initialPosition = gameObject.transform.position;
         planeObject.transform.position = initialPosition;
         planeObject.transform.localScale = new Vector3(10, 10, 10);
         planeObject.SetActive(true);
         plane = new Plane(planeObject.transform.up, planeObject.transform.position);
-        if (!mouseHitBox)
-        {
-            mouseHitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
-        } 
-        mouseHitBox.SetActive(true);
+        mode = Mode.Off;
     }
 
     // call to exit gesture creation
     public void uninitialize()
     {
         planeObject.SetActive(false);
-        mouseHitBox.SetActive(false);
+        switch (mode)
+        {
+            case Mode.Off:
+                break;
+            case Mode.Move:
+                endMovement();
+                break;
+            case Mode.Place:
+                endPlacement();
+                break;
+            default:
+                Debug.Log("error: hit box controls in unknown state");
+                break;
+        }
     }
+
+    public void beginPlacement()
+    {
+        toOff();
+        // create hover box
+        if (mouseHitBox == null)
+        {
+            Vector3 initialPosition = gameObject.transform.position;
+            mouseHitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
+        } 
+        mouseHitBox.SetActive(true);
+        mode = Mode.Place;
+    }
+
+    public void endPlacement()
+    {
+        // hide hover box
+        mouseHitBox.SetActive(false);
+        mode = Mode.Off;
+        addButton.onEndState();
+    }
+
+    public void beginMovement(GameObject moveHitBox)
+    {
+        toOff();
+        // make copy to save original state 
+        oldHitBox = Instantiate(moveHitBox);
+        oldHitBox.GetComponent<HitBox>().setGrey();
+        setMove = false;
+        this.moveHitBox = moveHitBox;
+        mode = Mode.Move;
+    }
+
+    public void endMovement()
+    {
+        if (setMove)
+        {
+            //Destroy(oldHitBox);
+        } else
+        {
+            // swap back with old copy
+            oldHitBox.GetComponent<HitBox>().setGreen();
+            gestureScreen.getGesture().replace(moveHitBox, oldHitBox);
+            // notify all references to replaced hitBox
+            // TODO
+            //Destroy(moveHitBox);
+
+        }
+        this.oldHitBox = null;
+        this.moveHitBox = null;
+        mode = Mode.Off;
+    }
+
+    public void toOff()
+    {
+        switch (mode)
+        {
+            case Mode.Move:
+                endMovement();
+                break;
+            case Mode.Place:
+                endPlacement();
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 

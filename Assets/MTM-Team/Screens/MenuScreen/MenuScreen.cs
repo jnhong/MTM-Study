@@ -24,15 +24,15 @@ public class MenuScreen : MonoBehaviour
     public void onGestureScreenButton()
     {
         gameObject.SetActive(false);
-        stateManager.toGestureScreen();
         uninitialize();
+        stateManager.toGestureScreen();
     }
 
     public void onRecordScreenButton()
     {
         gameObject.SetActive(false);
-        stateManager.toRecordScreen();
         uninitialize();
+        stateManager.toRecordScreen();
     }
     
     public void onQuitButton()

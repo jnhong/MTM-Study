@@ -79,6 +79,7 @@
     <Compile Include="Assets\MTM-Team\HitBox\HitBox.cs" />
     <Compile Include="Assets\MTM-Team\HitBoxPlacementControls\HitBoxPlacementControls.cs" />
     <Compile Include="Assets\MTM-Team\PointCloud\PointCloudView.cs" />
+    <Compile Include="Assets\MTM-Team\Screens\GestureScreen\AddHitBox.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\CustomInputField.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\GestureScreen.cs" />
     <Compile Include="Assets\MTM-Team\Screens\GestureScreen\HitBoxScrollList.cs" />

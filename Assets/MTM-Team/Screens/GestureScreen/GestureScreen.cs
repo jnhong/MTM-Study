@@ -12,11 +12,14 @@ public class GestureScreen : MonoBehaviour
     [SerializeField]
     private GestureManager gestureManager;
     [SerializeField]
+    private Text currentHitBoxText;
+    [SerializeField]
     private InputField inputField;
     [SerializeField]
     private HitBoxScrollList hitBoxScrollList;
 
     private Gesture gesture;
+    private GameObject hitBox;
     
     public Gesture getGesture()
     {
@@ -52,8 +55,8 @@ public class GestureScreen : MonoBehaviour
     public void onMenuScreenButton()
     {
         gameObject.SetActive(false);
-        stateManager.toMenuScreen();
         uninitialize();
+        stateManager.toMenuScreen();
     }
     
     public void onSubmitButton()
@@ -68,6 +71,13 @@ public class GestureScreen : MonoBehaviour
         gestureManager.addGesture(gesture);
         gesture.disableGesture();
         gesture = null;
+    }
+
+    public void focusHitBox(GameObject hitBox, string text)
+    {
+        this.hitBox = hitBox;
+        currentHitBoxText.text = text + " selected.";
+        controls.beginMovement(hitBox);
     }
 
 }

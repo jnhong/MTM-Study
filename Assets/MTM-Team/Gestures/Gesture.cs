@@ -29,6 +29,17 @@ public class Gesture
         fileWriter = GameObject.Find("FileWriter").GetComponent<FileWriter>();
     }
 
+    public LinkedList<GameObject> getHitBoxes()
+    {
+        return hitBoxes;
+    }    
+
+    public void replace(GameObject old, GameObject replacer)
+    {
+        LinkedListNode<GameObject> node = hitBoxes.Find(old);
+        node.Value = replacer;
+    }
+
     public string getLabel()
     {
         return label;
@@ -37,11 +48,6 @@ public class Gesture
     public void setLabel(string label)
     {
         this.label = label;
-    }
-    
-    public int getCount()
-    {
-        return hitBoxes.Count;
     }
     
     public void beginRecording()
@@ -114,6 +120,16 @@ public class Gesture
     {
         lineRenderer.positionCount = points.Count;
         lineRenderer.SetPositions(points.ToArray());
+    }
+
+    public void refreshLine()
+    {
+        points.Clear();
+        foreach (GameObject hitbox in hitBoxes)
+        {
+            points.Add(hitbox.transform.position);
+        }
+        updateLine();
     }
 
     public GameObject getLastHitBox()

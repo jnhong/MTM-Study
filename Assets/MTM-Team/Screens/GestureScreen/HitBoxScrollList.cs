@@ -14,16 +14,21 @@ public class HitBoxScrollList : MonoBehaviour
     public void populateList()
     {
         Gesture gesture = gestureScreen.getGesture();
+        LinkedList<GameObject> hitBoxes = gesture.getHitBoxes();
 
-        for (int i = 0; i < gesture.getCount(); ++i)
+        int i = 0;
+        foreach (GameObject hitBox in hitBoxes)
         {
             GameObject button = Instantiate(buttonTemplate);
 
             button.GetComponent<HitBoxScrollListButton>().setText("Hitbox " + i);
+            button.GetComponent<HitBoxScrollListButton>().setHitBox(hitBox);
             
             button.SetActive(true);
 
             button.transform.SetParent(content.transform, false);
+
+            ++i;
         }
     }
 

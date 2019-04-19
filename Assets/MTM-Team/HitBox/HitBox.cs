@@ -48,6 +48,21 @@ public class HitBox : MonoBehaviour
         this.gesture = gesture;
     }
 
+    public void refreshLine()
+    {
+        gesture.refreshLine();
+    }
+
+    public void setGrey()
+    {
+        rend.material.color = new Color(0.5f, 0.5f, 0.5f, 0.25f);
+    }
+
+    public void setGreen()
+    {
+        rend.material.color = green;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "HandLeft")

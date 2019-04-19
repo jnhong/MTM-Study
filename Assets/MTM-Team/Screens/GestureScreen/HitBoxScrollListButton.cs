@@ -12,24 +12,21 @@ public class HitBoxScrollListButton : MonoBehaviour
     [SerializeField]
     private Text textChild;
 
-    private HitBox hitbox;
+    private GameObject hitBox;
 
     public void setText(string text)
     {
         textChild.text = text;
     }
 
-    public void setHitbox(HitBox hitbox)
+    public void setHitBox(GameObject hitBox)
     {
-        this.hitbox = hitbox;
+        this.hitBox = hitBox;
     }
 
-    /*
-    reimplement but for hitboxes
     public void onClick()
     {
-        menuScreen.focusGesture(gesture);
+        gestureScreen.focusHitBox(hitBox, textChild.text);
     }
-    */
 
 }
