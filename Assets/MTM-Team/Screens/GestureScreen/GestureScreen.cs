@@ -17,6 +17,8 @@ public class GestureScreen : MonoBehaviour
     private InputField inputField;
     [SerializeField]
     private HitBoxScrollList hitBoxScrollList;
+    [SerializeField]
+    private GameObject jointToggles;
 
     private Gesture gesture;
     private GameObject hitBox;
@@ -48,8 +50,22 @@ public class GestureScreen : MonoBehaviour
 
     public void addHitBox(GameObject newHitBox)
     {
+        setJointToggles(newHitBox);
         gesture.addHitBox(newHitBox);
         hitBoxScrollList.refresh();
+    }
+
+    public void setJointToggles(GameObject newHitBox)
+    {
+        HitBox h = newHitBox.GetComponent<HitBox>();
+        h.clearJoints();
+        foreach (Transform child in jointToggles.transform)
+        {
+            if (child.GetComponent<Toggle>().isOn)
+            {
+                h.addJoint(child.Find("Label").GetComponent<Text>().text);
+            }
+        }
     }
 
     public void onMenuScreenButton()
@@ -73,11 +89,36 @@ public class GestureScreen : MonoBehaviour
         gesture = null;
     }
 
-    public void focusHitBox(GameObject hitBox, string text)
+    public void focusHitBox(GameObject hitBox, string hitBoxName)
     {
         this.hitBox = hitBox;
-        currentHitBoxText.text = text + " selected.";
-        controls.beginMovement(hitBox);
+        setUIToggles();
+        controls.beginMovement(hitBox, hitBoxName);
     }
+
+    private void setUIToggles()
+    {
+        HitBox h = hitBox.GetComponent<HitBox>();
+        foreach (Transform child in jointToggles.transform)
+        {
+            // get child joint string
+            // check if in hitbox
+            // set toggle is so
+            string joint = child.Find("Label").GetComponent<Text>().text;
+            if (h.hasJoint(joint))
+            {
+                child.GetComponent<Toggle>().isOn = true;
+            } else
+            {
+                child.GetComponent<Toggle>().isOn = false;
+            }
+        }
+    }
+
+    public void setCurrentHitBoxText(string s)
+    {
+        currentHitBoxText.text = s;
+    }
+
 
 }

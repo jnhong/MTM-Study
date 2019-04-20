@@ -182,6 +182,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     private void onClickMovement()
     {
         setMove = true;
+        gestureScreen.setJointToggles(moveHitBox);
         endMovement();
     }
 
@@ -240,6 +241,7 @@ public class HitBoxPlacementControls : MonoBehaviour
             mouseHitBox = Instantiate(hitBoxPreFab, initialPosition, Quaternion.identity);
         } 
         mouseHitBox.SetActive(true);
+        gestureScreen.setCurrentHitBoxText("Placing new hitbox.");
         mode = Mode.Place;
     }
 
@@ -248,10 +250,11 @@ public class HitBoxPlacementControls : MonoBehaviour
         // hide hover box
         mouseHitBox.SetActive(false);
         mode = Mode.Off;
+        gestureScreen.setCurrentHitBoxText("No hitbox selected.");
         addButton.onEndState();
     }
 
-    public void beginMovement(GameObject moveHitBox)
+    public void beginMovement(GameObject moveHitBox, string hitBoxName)
     {
         toOff();
         // make copy to save original state 
@@ -259,6 +262,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         oldHitBox.GetComponent<HitBox>().setGrey();
         setMove = false;
         this.moveHitBox = moveHitBox;
+        gestureScreen.setCurrentHitBoxText("Modifying " + hitBoxName);
         mode = Mode.Move;
     }
 
@@ -273,6 +277,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         Destroy(oldHitBox);
         oldHitBox = null;
         moveHitBox = null;
+        gestureScreen.setCurrentHitBoxText("No hitbox selected.");
         mode = Mode.Off;
     }
 

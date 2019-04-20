@@ -9,6 +9,7 @@ public class HitBox : MonoBehaviour
     Renderer rend;
 
     List<string> joints;
+    int numInside;
 
     Color green;
     Color yellow;
@@ -29,6 +30,25 @@ public class HitBox : MonoBehaviour
         rend = GetComponent<Renderer>();
         inactiveColor = green;
         rend.material.color = inactiveColor;
+        numInside = 0;
+        if (joints == null)
+        {
+            joints = new List<string>();
+        }
+    }
+
+    public void addJoint(string joint)
+    {
+        joints.Add(joint);
+    }
+
+    public bool hasJoint(string joint)
+    {
+        return joints.Contains(joint);
+    }
+    public void clearJoints()
+    {
+        joints.Clear();
     }
 
     public void highlight()
@@ -65,8 +85,9 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "HandLeft")
+        if (joints.Contains(other.gameObject.name))
         {
+            ++numInside;
             rend.material.color = red;
             if (gesture != null)
             {
@@ -78,9 +99,13 @@ public class HitBox : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.name == "HandLeft")
+        if (joints.Contains(other.gameObject.name))
         {
-            rend.material.color = inactiveColor;
+            --numInside;
+            if (numInside == 0)
+            {
+                rend.material.color = inactiveColor;
+            }
         }
     }
     
