@@ -3305,6 +3305,7 @@ MonoBehaviour:
   hitBoxPreFab: {fileID: 249049249}
   planeObject: {fileID: 1359125414}
   planeSpeed: 10
+  rescaleSpeed: 3
   gestureScreen: {fileID: 1550696152}
   addButton: {fileID: 7953276}
 --- !u!4 &809719634

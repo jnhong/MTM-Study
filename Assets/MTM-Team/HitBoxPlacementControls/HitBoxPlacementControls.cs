@@ -13,6 +13,8 @@ public class HitBoxPlacementControls : MonoBehaviour
     [SerializeField]
     private float planeSpeed = 10.0f;
     [SerializeField]
+    private float rescaleSpeed = 3.0f;
+    [SerializeField]
     private GestureScreen gestureScreen;
     [SerializeField]
     private AddHitBox addButton;
@@ -74,6 +76,33 @@ public class HitBoxPlacementControls : MonoBehaviour
         if (Input.GetKey(KeyCode.E)) // move plane up 
         {
             updatePlane(Time.deltaTime * planeSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.Z)) // make hitbox smaller 
+        {
+            rescaleHitBox(Time.deltaTime * - rescaleSpeed);
+        }
+
+        if (Input.GetKey(KeyCode.X)) // move plane larger 
+        {
+            rescaleHitBox(Time.deltaTime * rescaleSpeed);
+        }
+    }
+
+    private void rescaleHitBox(float deltaScale)
+    {
+        switch (mode)
+        {
+            case Mode.Off:
+                break;
+            case Mode.Move:
+                moveHitBox.transform.localScale += deltaScale * Vector3.one;
+                break;
+            case Mode.Place:
+                mouseHitBox.transform.localScale += deltaScale * Vector3.one;
+                break;
+            default:
+                break;
         }
     }
 
