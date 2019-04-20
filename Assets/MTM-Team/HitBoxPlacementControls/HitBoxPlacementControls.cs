@@ -193,10 +193,10 @@ public class HitBoxPlacementControls : MonoBehaviour
         gestureScreen.onMenuScreenButton();
     }
     
-    // exit to menu screen
+    // cancel placement or movement
     private void onEscape()
     {
-        gestureScreen.onMenuScreenButton();
+        toOff();
     }
 
     // call to begin gesture creation
@@ -273,6 +273,7 @@ public class HitBoxPlacementControls : MonoBehaviour
             // reset moveHitBox
             moveHitBox.transform.position = oldHitBox.transform.position;
             moveHitBox.transform.localScale = oldHitBox.transform.localScale;
+            moveHitBox.GetComponent<HitBox>().refreshLine();
         }
         Destroy(oldHitBox);
         oldHitBox = null;
