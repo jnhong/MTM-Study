@@ -34,11 +34,22 @@ public class Gesture
         return hitBoxes;
     }    
 
+    /*
     public void replace(GameObject old, GameObject replacer)
     {
         LinkedListNode<GameObject> node = hitBoxes.Find(old);
         node.Value = replacer;
     }
+    */
+
+    public void removeHitBox(GameObject hitBox)
+    {
+        hitBoxes.Remove(hitBox);
+        Object.Destroy(hitBox);
+        refreshLine();
+        resetSequence(); // in case first is removed, this highlights first box
+    }
+
 
     public string getLabel()
     {
@@ -71,7 +82,10 @@ public class Gesture
             currentNode.Value.GetComponent<HitBox>().unhighlight();
         }
         currentNode = hitBoxes.First;
-        currentNode.Value.GetComponent<HitBox>().highlight();
+        if (currentNode != null)
+        {
+            currentNode.Value.GetComponent<HitBox>().highlight();
+        }
     }
 
     public void hit(GameObject hitBox)

@@ -279,6 +279,7 @@ public class HitBoxPlacementControls : MonoBehaviour
         oldHitBox = null;
         moveHitBox = null;
         gestureScreen.setCurrentHitBoxText("No hitbox selected.");
+        gestureScreen.unfocusHitBox();
         mode = Mode.Off;
     }
 

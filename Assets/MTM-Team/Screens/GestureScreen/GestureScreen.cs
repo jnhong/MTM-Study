@@ -81,6 +81,16 @@ public class GestureScreen : MonoBehaviour
         onMenuScreenButton();
     }
 
+    public void onDeleteButton()
+    {
+        if (hitBox != null)
+        {
+            gesture.removeHitBox(hitBox);
+            controls.toOff();
+            hitBoxScrollList.refresh();
+        }
+    }
+
     public void submitGesture()
     {
         gesture.label = inputField.text;
@@ -94,6 +104,11 @@ public class GestureScreen : MonoBehaviour
         this.hitBox = hitBox;
         setUIToggles();
         controls.beginMovement(hitBox, hitBoxName);
+    }
+
+    public void unfocusHitBox()
+    {
+        hitBox = null;
     }
 
     private void setUIToggles()

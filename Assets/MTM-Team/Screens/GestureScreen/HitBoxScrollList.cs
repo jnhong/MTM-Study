@@ -52,12 +52,4 @@ public class HitBoxScrollList : MonoBehaviour
         refresh();
     }
 
-    /*
-    // reimplement but for hitboxes
-    public void removeGesture(Gesture gesture)
-    {
-        gestureManager.removeGesture(gesture);
-        refresh();
-    }
-    */
 }
