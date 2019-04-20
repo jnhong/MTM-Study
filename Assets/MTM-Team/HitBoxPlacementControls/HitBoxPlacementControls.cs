@@ -235,21 +235,15 @@ public class HitBoxPlacementControls : MonoBehaviour
 
     public void endMovement()
     {
-        if (setMove)
+        if (!setMove)
         {
-            //Destroy(oldHitBox);
-        } else
-        {
-            // swap back with old copy
-            oldHitBox.GetComponent<HitBox>().setGreen();
-            gestureScreen.getGesture().replace(moveHitBox, oldHitBox);
-            // notify all references to replaced hitBox
-            // TODO
-            //Destroy(moveHitBox);
-
+            // reset moveHitBox
+            moveHitBox.transform.position = oldHitBox.transform.position;
+            moveHitBox.transform.localScale = oldHitBox.transform.localScale;
         }
-        this.oldHitBox = null;
-        this.moveHitBox = null;
+        Destroy(oldHitBox);
+        oldHitBox = null;
+        moveHitBox = null;
         mode = Mode.Off;
     }
 
