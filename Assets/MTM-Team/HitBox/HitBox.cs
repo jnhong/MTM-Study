@@ -15,8 +15,8 @@ public class HitBox : MonoBehaviour
     Color yellow;
     Color red;
 
-    Color inactiveColor;
-    
+    bool highlighted;
+
     void Awake()
     {
         initialize();
@@ -28,9 +28,9 @@ public class HitBox : MonoBehaviour
         yellow = new Color(1, 1, 0, 0.25f);
         red = new Color(1, 0, 0, 0.25f);
         rend = GetComponent<Renderer>();
-        inactiveColor = green;
-        rend.material.color = inactiveColor;
+        rend.material.color = green;
         numInside = 0;
+        highlighted = false;
         if (joints == null)
         {
             joints = new List<string>();
@@ -53,14 +53,20 @@ public class HitBox : MonoBehaviour
 
     public void highlight()
     {
-        inactiveColor = yellow;
-        rend.material.color = inactiveColor;
+        highlighted = true;
+        if (numInside == 0)
+        {
+            rend.material.color = yellow;
+        } 
     }
 
     public void unhighlight()
     {
-        inactiveColor = green;
-        rend.material.color = inactiveColor;
+        highlighted = false;
+        if (numInside == 0)
+        {
+            rend.material.color = green;
+        } 
     }
 
     public void setGesture(Gesture gesture)
@@ -87,8 +93,11 @@ public class HitBox : MonoBehaviour
     {
         if (joints.Contains(other.gameObject.name))
         {
+            if (numInside == 0)
+            {
+                rend.material.color = red;
+            }
             ++numInside;
-            rend.material.color = red;
             if (gesture != null)
             {
                 gesture.hit(gameObject);
@@ -104,7 +113,7 @@ public class HitBox : MonoBehaviour
             --numInside;
             if (numInside == 0)
             {
-                rend.material.color = inactiveColor;
+                rend.material.color = highlighted ? yellow : green;
             }
         }
     }
