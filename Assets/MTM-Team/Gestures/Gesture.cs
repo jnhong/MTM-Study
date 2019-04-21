@@ -95,8 +95,8 @@ public class Gesture
         {
             if (currentNode.Next == null) // sequence completed
             {
-                currentNode = hitBoxes.First;
                 onSequenceCompletion();
+                resetSequence();
             } else
             {
                 currentNode.Value.GetComponent<HitBox>().unhighlight();

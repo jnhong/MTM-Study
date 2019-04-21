@@ -11,7 +11,7 @@ public class HitBoxPlacementControls : MonoBehaviour
     [SerializeField]
     private GameObject planeObject;
     [SerializeField]
-    private float planeSpeed = 10.0f;
+    private float planeSpeed = 3.0f;
     [SerializeField]
     private float rescaleSpeed = 3.0f;
     [SerializeField]
@@ -111,7 +111,14 @@ public class HitBoxPlacementControls : MonoBehaviour
         Vector3 offset = new Vector3(0, deltaY, 0);
         plane = Plane.Translate(plane, -offset);
         planeObject.transform.position += offset;
-        mouseHitBox.transform.position += offset;
+        if (mouseHitBox != null)
+        {
+            mouseHitBox.transform.position += offset;
+        }
+        if (moveHitBox != null)
+        {
+            moveHitBox.transform.position += offset;
+        }
     }
 
     private void updateMouseHitBox()
