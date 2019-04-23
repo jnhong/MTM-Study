@@ -91,6 +91,11 @@ public class Gesture
     public void hit(GameObject hitBox)
     {
         // check if box it is the one in the sequence expect (currentNode)
+        if (currentNode == null)
+        {
+            Debug.Log("gesture current node null");
+        } 
+
         if (hitBox == currentNode.Value)
         {
             if (currentNode.Next == null) // sequence completed
