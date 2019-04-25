@@ -19,6 +19,8 @@ public class GestureScreen : MonoBehaviour
     private HitBoxScrollList hitBoxScrollList;
     [SerializeField]
     private GameObject jointToggles;
+    [SerializeField]
+    private DemoScreen demoScreen;
 
     private Gesture gesture;
     private GameObject hitBox;
@@ -38,6 +40,7 @@ public class GestureScreen : MonoBehaviour
 
     private void uninitialize()
     {
+        demoScreen.uninitialize();
         controls.gameObject.SetActive(false);
         controls.uninitialize();
         if (gesture != null)

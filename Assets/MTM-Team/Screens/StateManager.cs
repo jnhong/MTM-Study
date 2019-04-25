@@ -21,6 +21,8 @@ public class StateManager : MonoBehaviour
     [SerializeField]
     private RecordScreen recordScreen;
     [SerializeField]
+    private DemoScreen demoScreen;
+    [SerializeField]
     private HitBoxPlacementControls hitBoxPlacementControls;
     [SerializeField]
     private CameraOrbitControls cameraOrbitControls;
@@ -33,6 +35,7 @@ public class StateManager : MonoBehaviour
         menuScreen.gameObject.SetActive(false);
         gestureScreen.gameObject.SetActive(false);
         recordScreen.gameObject.SetActive(false);
+        demoScreen.gameObject.SetActive(false);
 
         toMenuScreen();
     }
