@@ -94,6 +94,7 @@ public class Gesture
         if (currentNode == null)
         {
             Debug.Log("gesture current node null");
+            return;
         } 
 
         if (hitBox == currentNode.Value)
